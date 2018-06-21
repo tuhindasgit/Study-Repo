@@ -1,0 +1,70 @@
+https://www.aws.training/learningobject/curriculum?id=16357
+
+===================================================================
+
+Delivery Method
+This course is delivered through:
+
+eLearning (WBT)
+Duration
+7 hours
+=====================
+
+Course Outline
+=====================
+
+This course covers the following topics:
+
+AWS Cloud Practitioner Essentials: Introduction
+
+5 min
+
+AWS Cloud Concepts Essentials
+
+30 min
+
+Introduction to the Cloud
+Introduction to the AWS Cloud
+AWS Core Services Essentials
+
+3 hours
+
+Overview of Services and Categories
+Introduction to the AWS Global Infrastructure
+Introduction to Amazon VPC
+Introduction to Security Groups
+Introduction to Compute Services
+Introduction to AWS Storage Services
+Introduction to AWS Database Solutions
+AWS Security Essentials
+
+1 hour
+
+Introduction to AWS Security
+The AWS Shared Responsibility Model
+AWS Access Control and Management
+AWS Security Compliance Programs
+AWS Security Resources
+AWS Architecting Essentials
+
+45 min
+
+Introduction to the Well-Architected Framework
+Reference Architecture: Fault Tolerance and High Availability
+Reference Architecture: Web Hosting
+AWS Pricing and Support Essentials
+
+45 min
+
+Fundamentals of Pricing
+Pricing Details
+The TCO Calculator Overview
+AWS Support Plans Overview
+AWS Cloud Practitioner Essentials: Bonus Materials
+
+1 hour
+
+Supplementary videos that enhance concepts learned in the content modules of AWS Cloud Practitioner Essentials
+AWS Cloud Practitioner Essentials: Course Summary
+
+5 min

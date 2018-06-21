@@ -1,0 +1,188 @@
+﻿IP Classes in decimal notation
+
+===================================
+
+  Class A addresses range from 1-126
+  Class B addresses range from 128-191
+  Class C addresses range from 192-223
+  Class D addresses range from 224-239
+  Class E addresses range from 240-254
+    
+=======================================
+
+    0 [Zero] is reserved and represents all IP addresses.
+    127 is a reserved address and is used for testing, like a loop back on an interface.
+    255 is a reserved address and is used for broadcasting purposes.
+
+	
+	
+	IP address classes
+================================
+Class A: 1 – 126 (127 reserved for loopback and diagnostic tests)
+Class B: 128 – 191
+Class C: 192 – 223
+Class D: 224 – 239 (reserved, used primarily for IP multicasting)
+Class E: 240 – 254 (reserved, experimental)
+
+=============================================
+Private addresses (reserved) 
+=============================================
+
+Class A: 10.0.0.0 through 10.255.255.255
+Class B: 172.16.0.0 through 172.31.255.255
+Class C: 192.168.0.0 through 192.168.255.255
+
+
+=================================================================
+
+To determine the number of subnets, use the 2x-2, where the x exponent is the number of subnet bits in the mask.
+
+To determine the number of hosts, use the 2x-2, where the x exponent is the number of host bits in the mask.
+
+To determine the mask you need for your network, you must first determine your business requirements. Count the number of networks and the number of hosts per network that you need. Then determine the mask by using the equations shown above—and don’t forget to factor for growth.
+
+For example, if you have eight networks and each requires 10 hosts, you would use the Class C mask of 255.255.255.240. Why? Because 240 in binary is 11110000, which means you have four subnet bits and four host bits. Using our math, we’d get the following:
+24-2=14 subnets
+24-2=14 hosts
+
+Many people find it easy to memorize the Class C information because Class C networks have few bits to manipulate. However, there is an easier way to subnet.
+
+====================================================================
+
+
+You can see in Table A that the bits that are turned on (1s) are used for subnetting, while the bits that are turned off (0s) are used for addressing of hosts. You can use some easy math to determine the number of subnets and hosts per subnet for each different mask.
+
+To determine the number of subnets, use the 2x-2, where the x exponent is the number of subnet bits in the mask.
+
+To determine the number of hosts, use the 2x-2, where the x exponent is the number of host bits in the mask.
+
+To determine the mask you need for your network, you must first determine your business requirements. Count the number of networks and the number of hosts per network that you need. Then determine the mask by using the equations shown above—and don’t forget to factor for growth.
+
+For example, if you have eight networks and each requires 10 hosts, you would use the Class C mask of 255.255.255.240. Why? Because 240 in binary is 11110000, which means you have four subnet bits and four host bits. Using our math, we’d get the following:
+24-2=14 subnets
+24-2=14 hosts
+
+Many people find it easy to memorize the Class C information because Class C networks have few bits to manipulate. However, there is an easier way to subnet.
+
+Easy subnetting
+========================
+
+Instead of memorizing the entire table (Table A), it’s possible to glance at a host address and quickly determine the necessary information if you’ve memorized key parts of the table. First, you need to know your binary-to-decimal conversion. Memorize the number of bits used with each mask that are shown in Table A. Second, you need to remember the following:
+256-192=64
+256-224=32
+256-240=16
+256-248=8
+256-252=4
+
+Once you have the two steps memorized, you can begin subnetting. Our first example will use the Class C mask of 255.255.255.192. Ask five simple questions to gather all the facts:
+
+    How many subnet bits are used in this mask?
+    How many host bits are available per subnet?
+    What are the subnet addresses?
+    What is the broadcast address of each subnet?
+    What is the valid host range of each subnet?
+
+
+You already know how to answer questions one and two. To answer question three, use the formula 256-subnetmask to get the first subnet and your variable. Keep adding this number to itself until you get to the subnet mask value to determine the valid subnets. Once you verify all of the subnets, you can determine the broadcast address by looking at the next subnet’s value. The broadcast address is the number just before the next subnet number. Once you have the subnet number and broadcast address, the valid hosts are the numbers in between.
+
+Here are the answers using 255.255.255.192:
+=============================================
+
+    How many subnet bits are used in this mask?
+    Answer: 2
+    22-2=2 subnets
+    How many host bits are available per subnet?
+    Answer: 6
+    26-2=62 hosts per subnet
+    What are the subnet addresses?
+    Answer: 256-192=64 (the first subnet)
+    64+64=128 (the second subnet)
+    64+128=192. However, although 192 is the subnet mask value, it’s not a valid subnet. The valid subnets are 64 and 128.
+    What is the broadcast address of each subnet?
+    Answer: 64 is the first subnet and 128 is the second subnet. The broadcast address is always the number before the next subnet. The broadcast address of the 64 subnet is 127. The broadcast address of the 128 subnet is 191.
+    What is the valid host range of each subnet?
+    Answer: The valid hosts are the numbers between the subnet number and the mask. For the 64 subnet, the valid host range is 64-126. For the 128 subnet, the valid host range is 129-190.
+
+
+Let’s do a second example using the Class C mask of 255.255.255.224. Here are the answers:
+===========================================================================================
+
+    How many subnet bits are used in this mask?
+    Answer: 3 bits or 23-2=6 subnets
+    How many host bits are available per subnet?
+    Answer: 5 bits or 25-2=30 hosts per subnet
+    What are the subnet addresses?
+    Answer: 256-224 =32, 64, 96, 128, 160 and 192 (Six subnets found by continuing to add 32 to itself.)
+    What is the broadcast address of each subnet?
+    Answer: The broadcast address for the 32 subnet is 63. The broadcast address for the 64 subnet is 95. The broadcast address for the 96 subnet is 127. The broadcast address for the 160 subnet is 191. The broadcast address for the 192 subnet is 223 (since 224 is the mask).
+    What is the valid host range of each subnet?
+    Answer: The valid hosts are the numbers in between the subnet and broadcast addresses. For example, the 32 subnet valid hosts are 33-62.
+
+
+Let’s do a third example using the Class C mask of 255.255.255.240. Here are the answers:
+==========================================================================================
+
+    How many subnet bits are used in this mask?
+    Answer: 4 bits or 24-2=14 subnets
+    How many host bits are available per subnet?
+    Answer: 4 bits or 24-2=14 hosts per subnet
+    What are the subnet addresses?
+    Answer: 256-240 =16, 32, 48, 64, 80, 96, 112, 128, 144. 160, 176, 192, 208 and 224 (14 subnets found by continuing to add 16 to itself.)
+    What is the broadcast address of each subnet?
+    Answer: Here are some examples of the broadcast address: The broadcast address for the 16 subnet is 31. The broadcast address for the 32 subnet is 47. The broadcast address for the 64 subnet is 79. The broadcast address for the 96 subnet is 111. The broadcast address for the 160 subnet is 175. The broadcast address for the 192 subnet is 207.
+    What is the valid host range of each subnet?
+    Answer: The valid hosts are the numbers in between the subnet and broadcast addresses. The 32 subnet valid hosts are 33-46.
+
+
+Let’s do a fourth example using the Class C mask of 255.255.255.248. Here are the answers:
+===========================================================================================
+
+    How many subnet bits are used in this mask?
+    Answer: 5 bits or 25-2=30 subnets
+    How many host bits are available per subnet?
+    Answer: 3 bits or 23-2=6 hosts per subnet
+    What are the subnet addresses?
+    Answer 256-248 =8, 16, 24, 32, 40, 48, and so forth. The last subnet is 240 (30 subnets found by continuing to add 8 to itself).
+    What is the broadcast address of each subnet?
+    Answer: The broadcast address for the 8 subnet is 15. The broadcast address for the 16 subnet is 23. The broadcast address for the 48 subnet is 55.
+    What is the valid host range of each subnet?
+    Answer: The valid hosts are the numbers in between the subnet and broadcast addresses. For example, the 32 subnet valid hosts are 33-38.
+
+
+Let’s do a fifth example using the Class C mask of 255.255.255.252. Here are the answers:
+===========================================================================================
+
+    How many subnet bits are used in this mask?
+    Answer: 6 bits or 26-2=62 subnets
+    How many host bits are available per subnet?
+    Answer: 2 bits or 22-2=2 hosts per subnet
+    What are the subnet addresses?
+    Answer: 256-252 =4, 8, 12, 16, 20, and so forth. The last subnet is 248 (62 subnets found by continuing to add 4 to itself).
+    What is the broadcast address of each subnet?
+    Answer: The broadcast address for the 4 subnet is 7. The broadcast address for the 8 subnet is 11. The broadcast address for the 12 subnet is 15. The broadcast address for the 20 subnet is 23.
+    What is the valid host range of each subnet?
+    Answer: The valid hosts are the numbers in between the subnet and broadcast addresses. For example, the 16 subnet valid hosts are 17 and 18.
+
+
+How do I use this information?
+=================================
+
+Let’s take a look at an example that will highlight how the above information is applied.
+
+A host configuration has an IP configuration of 192.168.10.17 255.255.255.248. What are the subnet, broadcast address, and host range that this host is a member of? The answer is: 256-248=8, 16, 24. This host is in the 16 subnet, the broadcast address of the 16 subnet is 23, and the valid host range is 17-22. Pretty easy!
+
+Here is an explanation of this example: First, I used 256-subnetmask to get the variable and first subnet. Then I kept adding this number to itself until I passed the host address. The subnet is the number before the host address, and the broadcast address is the number right before the next subnet. The valid hosts are the numbers in between the subnet and broadcast address.
+
+Let’s examine a second example. A host configuration has an IP configuration of 192.168.10.37 255.255.255.240. What are the subnet, broadcast address, and host range this host is a member of? The answer is: 256-240=16, 32, 48. This host is in the 32 subnet, the broadcast address of the 32 subnet is 47, and the valid host range is 33-46.
+
+Let’s go through a third example: A host configuration has an IP configuration of 192.168.10.44 255.255.255.224. What are the subnet, broadcast address, and host range this host is a member of? The answer is: 256-224=32, 64. This host is in the 32 subnet, the broadcast address of the 32 subnet is 63, and the valid host range is 33-62.
+
+Here’s a fourth example: A host configuration has an IP configuration of 192.168.10.17 255.255.255.252. What are the subnet, broadcast address, and host range this host is a member of? The answer is: 256-252=4, 8, 12, 16, 20. This host is in the 16 subnet, the broadcast address of the 16 subnet is 19, and the valid host range is 17-18.
+
+Let’s go through a final example. A host configuration has an IP configuration of 192.168.10.88 255.255.255.192. What are the subnet, broadcast address and host range this host is a member of? The answer is: 256-192=64, 128. This host is in the 64 subnet, the broadcast address of the 64 subnet is 127, and the valid host range must be 65-126.
+
+Conclusion
+=================
+
+It is important to be able to subnet quickly and efficiently. After studying the examples presented in this Daily Drill Down, you should be familiar with this process with Class C addresses. Practice your subnetting as much as possible, and the process will get easier and easier. In my next Daily Drill Down, I’ll take subnetting a step further and discuss subnetting a Class B network address
+
