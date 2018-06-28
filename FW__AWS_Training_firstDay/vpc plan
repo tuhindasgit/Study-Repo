@@ -1,0 +1,22 @@
+A: Step 1: Create a VPC with CIDR 10.0.0.0/16 with tenancy as Default
+Step 2: Add Subnets to this VPC
+ 
+Step 3: Create an Internet Gateway and attach it to the  VPC
+Step 4: Create a Route Table containing Internet Gateway within its route
+Step 5: Associate this Route table to the subnet to make it “Public”
+ 
+Step 6: Launch instances in each of the subnets
+Step 7: Assign Elastic IPs to instances in Public Subnet
+ 
+Step 8: Connect to instances via SSH/RDP
+ 
+Step 9:  Create a NAT Security Group
+ 
+Step 10: Launch a NAT Instance with security group in Step 9. Attach new Elastic IP
+Step 11: Disable Source/Destination Check for NAT instance
+Step 12: Associate NAT instance to private subnet
+Step 13: Associate route table to the private subnet
+Step 14: Test the setup
+ 
+chmod 700 MyNewKey4June.pem
+ssh -i MyNewKey4June.pem ec2-user@10.0.2.67
